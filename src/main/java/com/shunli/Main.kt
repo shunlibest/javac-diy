@@ -16,14 +16,9 @@ object Main {
         //S2:词法分析系统
         val scannerFactory: ScannerFactory  = ScannerFactory.instance()
         val lexer: Lexer = scannerFactory.newScanner(charContent, false)
-//        JavacParser(this, lexer, keepDocComments, keepLineMap, keepEndPos)
-
         repeat(100){
             lexer.nextToken()
-
         }
-//        while(true){
-//        }
     }
 
 

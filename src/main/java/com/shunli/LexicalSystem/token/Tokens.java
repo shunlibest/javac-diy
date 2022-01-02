@@ -26,9 +26,9 @@
 package com.shunli.LexicalSystem.token;
 
 
-import com.sun.tools.javac.util.*;
-import com.sun.tools.javac.util.Name;
-import com.sun.tools.javac.util.Names;
+
+import com.shunli.LexicalSystem.name.Name;
+import com.shunli.LexicalSystem.name.Names;
 
 import java.util.Locale;
 
@@ -47,8 +47,8 @@ public class Tokens {
 
     //所有Token的名字
     private Name[] tokenName = new Name[TokenKind.values().length];
-    private static final Context context = new Context();
-    //单例
+
+     //单例
     private static Tokens instance = null;
 
     public static Tokens instance() {
@@ -58,7 +58,7 @@ public class Tokens {
     }
 
     protected Tokens() {
-        names = Names.instance(context);
+        names = Names.instance();
         for (TokenKind t : TokenKind.values()) {
             if (t.name != null)
                 enterKeyword(t.name, t);
@@ -87,9 +87,9 @@ public class Tokens {
      */
     public TokenKind lookupKind(Name name) {
 //        return lookupKind(name.toString());
-        if (name.toString() .equals("=")){
-            return lookupKind("=");
-        }
+//        if (name.toString() .equals("=")){
+//            return lookupKind("=");
+//        }
         return (name.getIndex() > maxKey) ? TokenKind.IDENTIFIER : key[name.getIndex()];
     }
 

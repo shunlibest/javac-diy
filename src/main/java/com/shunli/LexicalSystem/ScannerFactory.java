@@ -26,10 +26,9 @@
 package com.shunli.LexicalSystem;
 
 
+import com.shunli.LexicalSystem.name.Names;
 import com.shunli.LexicalSystem.token.Tokens;
-import com.sun.tools.javac.parser.JavadocTokenizer;
 import com.sun.tools.javac.util.Context;
-import com.sun.tools.javac.util.Names;
 
 import java.nio.CharBuffer;
 
@@ -37,7 +36,6 @@ import java.nio.CharBuffer;
 public class ScannerFactory {
 
     private static ScannerFactory instance = null;
-    public static Context context = new Context();
 
     public static ScannerFactory instance() {
         if (instance == null)
@@ -52,7 +50,7 @@ public class ScannerFactory {
      * Create a new scanner factory.
      */
     protected ScannerFactory() {
-        this.names = Names.instance(context);
+        this.names = Names.instance();
         this.tokens = Tokens.instance();
     }
 

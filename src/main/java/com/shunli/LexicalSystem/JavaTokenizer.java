@@ -26,9 +26,9 @@
 package com.shunli.LexicalSystem;
 
 
+import com.shunli.LexicalSystem.name.Name;
 import com.shunli.LexicalSystem.token.*;
 import com.shunli.utils.Log;
-import com.sun.tools.javac.util.Name;
 import com.sun.tools.javac.util.Position;
 
 import java.nio.CharBuffer;
@@ -59,9 +59,7 @@ public class JavaTokenizer {
     protected TokenKind tk;
 
 
-    /**
-     * The token's name, set by nextToken().
-     */
+    //调用nextToken()的时候, 会设置token的Name
     protected Name name;
 
     /**

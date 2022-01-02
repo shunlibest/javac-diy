@@ -1,14 +1,13 @@
 package com.shunli.LexicalSystem.token;
 
-import com.sun.tools.javac.util.ListBuffer;
-import com.sun.tools.javac.util.Name;
 
-import java.util.ArrayList;
-import java.util.List;
+ import com.shunli.LexicalSystem.name.Name;
+
+ import java.util.List;
 
 /**
- * This is the class representing a javac token. Each token has several fields
- * that are set by the javac lexer (i.e. start/end position, string value, etc).
+ * Javac 会将 Java 源代码中用到的字符串封装为Name 对象，包括标识符号、保留关键字等，
+ * 并且相同的字符串用同一个 Name 对象表示，这样在判断Name对象是否相等时就可以直接通过"=="判断了。
  */
 public class Token {
     //该Token的类型
@@ -20,16 +19,16 @@ public class Token {
     //token结束的位置
     public final int endPos;
 
-    /**
-     * Comment reader associated with this token
-     */
-    public final List<Tokens.Comment> comments;
+//    /**
+//     * Comment reader associated with this token
+//     */
+//    public final List<Tokens.Comment> comments;
 
     public Token(TokenKind kind, int pos, int endPos, List<Tokens.Comment> comments) {
         this.kind = kind;
         this.pos = pos;
         this.endPos = endPos;
-        this.comments = comments;
+//        this.comments = comments;
         checkKind();
     }
 
@@ -46,7 +45,7 @@ public class Token {
             throw new AssertionError("Cant split - bad subtokens");
         }
         return new Token[]{
-                new Token(t1, pos, pos + t1.name.length(), comments),
+                new Token(t1, pos, pos + t1.name.length(), null),
                 new Token(t2, pos + t1.name.length(), endPos, null)
         };
     }

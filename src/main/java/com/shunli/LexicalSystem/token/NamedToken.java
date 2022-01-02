@@ -1,6 +1,7 @@
 package com.shunli.LexicalSystem.token;
 
-import com.sun.tools.javac.util.Name;
+
+import com.shunli.LexicalSystem.name.Name;
 
 import java.util.List;
 

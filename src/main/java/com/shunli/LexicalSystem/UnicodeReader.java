@@ -26,11 +26,12 @@
 package com.shunli.LexicalSystem;
 
 
+import com.shunli.LexicalSystem.name.Name;
+import com.shunli.LexicalSystem.name.Names;
 import com.shunli.utils.Log;
 import com.sun.tools.javac.file.JavacFileManager;
 import com.sun.tools.javac.util.ArrayUtils;
-import com.sun.tools.javac.util.Name;
-import com.sun.tools.javac.util.Names;
+
 
 import java.nio.CharBuffer;
 import java.util.Arrays;
