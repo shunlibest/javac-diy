@@ -5,31 +5,23 @@ import com.shunli.LexicalSystem.Lexer
 import com.shunli.LexicalSystem.ScannerFactory
 import java.io.File
 
+
 object Main {
     @JvmStatic
     fun main(args: Array<String>) {
         //S1: 文件系统
-        val regularFileObject =
-            RegularFileObject(File("/Users/shunli/Documents/codeJava/metting/src/main/java/com/shunli/HelloWorld2.java"))
+//        val regularFileObject =
+//            RegularFileObject(File("../resources/javaFiles/HelloWorld.txt"))
+
+        val inputFile = this.javaClass.classLoader.getResource("javaFiles/HelloWorld.txt")!!.file
+        val regularFileObject = RegularFileObject(File(inputFile))
 
         val charContent = regularFileObject.getCharContent(false)
         //S2:词法分析系统
-        val scannerFactory: ScannerFactory  = ScannerFactory.instance()
+        val scannerFactory: ScannerFactory = ScannerFactory.instance()
         val lexer: Lexer = scannerFactory.newScanner(charContent, false)
-        repeat(100){
+        repeat(100) {
             lexer.nextToken()
         }
     }
-
-
-    private val javaFile = """
-        package com.shunli;
-
-        public final class HelloWorld2  {
-            private double hans = 123.4;
-            public static void main(String[] args) {
-                System.out.println("hello world");
-            }
-        }        
-    """.trimIndent()
 }
