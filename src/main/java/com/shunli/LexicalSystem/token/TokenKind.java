@@ -1,18 +1,8 @@
 package com.shunli.LexicalSystem.token;
-
-import com.sun.tools.javac.api.Formattable;
-import com.sun.tools.javac.util.Filter;
-import com.sun.tools.javac.api.Messages;
-
 import java.util.Locale;
 
-/**
- * 枚举了所用到的所有Token类型; Token可选择与名称相关联。
- * token大体可以分为有name和无name的两类;
- * 如果name不空: 则表示该枚举有值
- * 如果name为空: 则表示为枚举常量
- */
-public enum TokenKind implements Formattable, Filter<TokenKind> {
+
+public enum TokenKind{
 
     //类型A: 各种标识符号
     ARROW("->"), COLCOL("::"), LPAREN("("), RPAREN(")"), LBRACE("{"),
@@ -142,19 +132,11 @@ public enum TokenKind implements Formattable, Filter<TokenKind> {
         }
     }
 
-    @Override
-    public String toString(Locale locale, Messages messages) {
-        return name != null ? toString() : messages.getLocalizedString(locale, "compiler.misc." + toString());
-    }
 
     public String getKind() {
         return "Token";
     }
 
-    @Override
-    public boolean accepts(TokenKind that) {
-        return this == that;
-    }
 
     //标签常量
     public enum Tag {

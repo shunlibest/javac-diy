@@ -116,6 +116,5 @@ public class Tokens {
     }
 
 
-    public static final Token DUMMY =
-            new Token(TokenKind.ERROR, 0, 0, null);
+//    public static final Token DUMMY = new Token(TokenKind.ERROR, 0, 0, null);
 }

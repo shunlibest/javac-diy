@@ -1,27 +1,31 @@
 package com.shunli
 
 import com.shunli.FileSystem.RegularFileObject
-import com.shunli.LexicalSystem.Lexer
-import com.shunli.LexicalSystem.ScannerFactory
+import com.shunli.LexicalSystem.JavaTokenizer
+import com.shunli.LexicalSystem.ReaderHelper
 import java.io.File
 
 
 object Main {
     @JvmStatic
     fun main(args: Array<String>) {
-        //S1: 文件系统
-//        val regularFileObject =
-//            RegularFileObject(File("../resources/javaFiles/HelloWorld.txt"))
-
-        val inputFile = this.javaClass.classLoader.getResource("javaFiles/HelloWorld.txt")!!.file
+        //S0: 文件系统
+//        val inputFile = this.javaClass.classLoader.getResource("javaFiles/HelloWorld.txt")!!.file
+        val inputFile = this.javaClass.classLoader.getResource("javaFiles/BubbleSort.txt")!!.file
         val regularFileObject = RegularFileObject(File(inputFile))
 
-        val charContent = regularFileObject.getCharContent(false)
-        //S2:词法分析系统
-        val scannerFactory: ScannerFactory = ScannerFactory.instance()
-        val lexer: Lexer = scannerFactory.newScanner(charContent, false)
-        repeat(100) {
-            lexer.nextToken()
-        }
+        val readerHelper = ReaderHelper(inputFile)
+
+
+        //S1:词法分析系统
+        val javaTokenizer = JavaTokenizer(readerHelper)
+
+        do {
+            val readToken = javaTokenizer.readToken()
+            println(readToken?.text ?: "-----------\nfinish read all tokens")
+        } while (readToken != null)
     }
+
+
+//        val lexer = scannerFactory.newScanner(charContent, false)
 }
